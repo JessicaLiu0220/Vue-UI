@@ -1,5 +1,16 @@
 <template>
-  <div>
-    <button><slot /></button>
-  </div>
+  <button class="button" :class="`theme-${theme}`"><slot /></button>
 </template>
+<script>
+export default {
+  props: {
+    theme: {
+      type: String,
+      default: "button",
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+</style>
