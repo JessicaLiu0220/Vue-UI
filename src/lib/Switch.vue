@@ -1,10 +1,10 @@
 <template>
-  <button :class="{ checked: value }" @click="toggle">
+  <button @click="toggle" :class="{ checked: value }">
     <span></span>
   </button>
 </template>
-
-<script>
+<script lang="ts">
+import { ref } from "vue";
 export default {
   props: {
     value: Boolean,
@@ -18,7 +18,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 $h: 22px;
 $h2: $h - 4px;
 button {
