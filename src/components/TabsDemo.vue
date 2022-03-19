@@ -1,7 +1,7 @@
 <template>
   <Tabs>
-    <Tab>111222</Tab>
-    <Tab>222333</Tab>
+    <Tab title="标题1">内容1</Tab>
+    <Tab title="标题2">内容2</Tab>
   </Tabs>
 </template>
 
