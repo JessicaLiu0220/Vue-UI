@@ -1,27 +1,38 @@
 <template>
   <div class="topnav">
-    <div class="logo">
+    <router-link to="/" class="logo">
       <svg class="icon">
         <use xlink:href="#icon-ku01"></use>
       </svg>
-    </div>
+    </router-link>
     <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li>
+        <router-link to="/doc">文档</router-link>
+      </li>
     </ul>
-    <span class="toggleAside" @click="toggleMenu"></span>
+    <svg v-if="toggleMenuButtonVisible" class="toggleAside" @click="toggleMenu">
+      <use xlink:href="#icon-caidan"></use>
+    </svg>
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { inject, Ref } from "vue";
 export default {
+  props: {
+    toggleMenuButtonVisible: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
     const menuVisible = inject<Ref<boolean>>("menuVisible"); // get
     const toggleMenu = () => {
       menuVisible.value = !menuVisible.value;
     };
-    return { toggleMenu };
+    return {
+      toggleMenu,
+    };
   },
 };
 </script>
@@ -31,17 +42,26 @@ export default {
   display: flex;
   padding: 16px;
   position: fixed;
-  width: 100%;
   top: 0;
   left: 0;
+  width: 100%;
   z-index: 10;
   justify-content: center;
   align-items: center;
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    > svg {
+      width: 32px;
+      height: 32px;
+    }
   }
   > .menu {
+    background: #fff;
+    display: inline-block;
+    border-radius: 8px;
+    padding: 5px 1px;
+
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
@@ -50,14 +70,14 @@ export default {
     }
   }
   > .toggleAside {
-    width: 24px;
-    height: 24px;
-    background: red;
+    width: 32px;
+    height: 32px;
     position: absolute;
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
     display: none;
+    background: fade-out(black, 0.9);
   }
   @media (max-width: 500px) {
     > .menu {
@@ -65,10 +85,6 @@ export default {
     }
     > .logo {
       margin: 0 auto;
-      > svg {
-        width: 200px;
-        height: 200px;
-      }
     }
     > .toggleAside {
       display: inline-block;

@@ -1,8 +1,20 @@
 <template>
   <div class="layout">
-    <Topnav class="nav" />
+    <Topnav toggleMenuButtonVisible class="nav" />
     <div class="content">
       <aside v-if="menuVisible">
+        <h2>文档</h2>
+        <ul>
+          <li>
+            <router-link to="/doc/intro">介绍</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/start">开始</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/install">安装</router-link>
+          </li>
+        </ul>
         <h2>组件列表</h2>
         <ol>
           <li>
@@ -19,22 +31,29 @@
           </li>
         </ol>
       </aside>
-      <main><router-view></router-view></main>
+      <main>
+        <router-view />
+      </main>
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import Topnav from "../components/Topnav.vue";
 import { inject, Ref } from "vue";
 export default {
-  components: { Topnav },
+  components: {
+    Topnav,
+  },
   setup() {
     const menuVisible = inject<Ref<boolean>>("menuVisible"); // get
-    console.log(menuVisible.value);
-    return { menuVisible };
+    return {
+      menuVisible,
+    };
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .layout {
   display: flex;
@@ -44,10 +63,9 @@ export default {
     flex-shrink: 0;
   }
   > .content {
-    border: 1px solid red;
     flex-grow: 1;
-    padding-top: 55px;
-    padding-left: 150px;
+    padding-top: 60px;
+    padding-left: 156px;
     @media (max-width: 500px) {
       padding-left: 0;
     }
@@ -55,19 +73,21 @@ export default {
 }
 .content {
   display: flex;
-
   > aside {
     flex-shrink: 0;
   }
   > main {
     flex-grow: 1;
     padding: 16px;
-    /* background: lightgreen; */
+    background: white;
   }
 }
-
 aside {
-  background: lightblue;
+  background: linear-gradient(
+    137deg,
+    rgba(132, 195, 255, 1) 0%,
+    rgba(62, 133, 234, 1) 100%
+  );
   width: 150px;
   padding: 16px;
   position: fixed;
