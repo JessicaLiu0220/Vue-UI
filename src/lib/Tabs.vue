@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import Tab from "./Tab.vue";
-import { onMounted, onUpdated, ref } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 export default {
   props: {
     selected: {
@@ -44,22 +44,24 @@ export default {
     const navItems = ref<HTMLDivElement[]>([]);
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
-    const x = () => {
-      const divs = navItems.value;
-      const result = divs.filter((div) =>
-        div.classList.contains("selected")
-      )[0];
-      const { width } = result.getBoundingClientRect();
-      indicator.value.style.width = width + "px";
 
-      const { left: left1 } = container.value.getBoundingClientRect();
-      const { left: left2 } = result.getBoundingClientRect();
-      const left = left2 - left1;
-      indicator.value.style.left = left + "px";
-    };
-    onMounted(x);
-    onUpdated(x);
-    const defaults = context.slots.default();
+    onMounted(() => {
+      watchEffect(() => {
+        const divs = navItems.value;
+        const result = divs.filter((div) =>
+          div.classList.contains("selected")
+        )[0];
+        const { width } = result.getBoundingClientRect();
+        indicator.value.style.width = width + "px";
+
+        const { left: left1 } = container.value.getBoundingClientRect();
+        const { left: left2 } = result.getBoundingClientRect();
+        const left = left2 - left1;
+        indicator.value.style.left = left + "px";
+      });
+    });
+
+    const defaults = context.slots.default(); //js获取插槽内容
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
         throw new Error("Tabs 子标签必须是 Tab");
