@@ -4,7 +4,7 @@
     <div class="content">
       <aside v-if="menuVisible">
         <h2>文档</h2>
-        <ul>
+        <ol>
           <li>
             <router-link to="/doc/intro">介绍</router-link>
           </li>
@@ -14,7 +14,7 @@
           <li>
             <router-link to="/doc/install">安装</router-link>
           </li>
-        </ul>
+        </ol>
         <h2>组件列表</h2>
         <ol>
           <li>
@@ -78,18 +78,16 @@ export default {
   }
   > main {
     flex-grow: 1;
-    padding: 16px;
+    padding: 16px 45px;
     background: white;
+    border: 1px solid green;
   }
 }
 aside {
-  background: linear-gradient(
-    137deg,
-    rgba(132, 195, 255, 1) 0%,
-    rgba(62, 133, 234, 1) 100%
-  );
-  width: 150px;
-  padding: 16px;
+  background: rgba(132, 195, 255, 1);
+  width: 180px;
+  padding: 16px 0;
+  border: 1px solid red;
   position: fixed;
   top: 0;
   left: 0;
@@ -97,10 +95,18 @@ aside {
   height: 100%;
   > h2 {
     margin-bottom: 4px;
+    padding: 0 16px;
   }
   > ol {
     > li {
-      padding: 4px 0;
+      > a {
+        display: block;
+        padding: 8px 16px;
+        text-decoration: none;
+      }
+      .router-link-active {
+        background: white;
+      }
     }
   }
 }
