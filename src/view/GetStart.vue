@@ -1,4 +1,3 @@
-x
 <template>
   <article class="markdown-body" v-html="md"></article>
 </template>
@@ -13,3 +12,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.markdown-body {
+  background: white;
+}
+</style>
