@@ -1,12 +1,12 @@
 <template>
   <template v-if="visible">
-    <teleport to="body">
-      <div class="gulu-dialog-overlay" @click="onClick"></div>
+    <Teleport to="body">
+      <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
       <div class="gulu-dialog-wrapper">
         <div class="gulu-dialog">
           <header>
             <slot name="title" />
-            <span class="gulu-dialog-close" @click="close"></span>
+            <span @click="close" class="gulu-dialog-close"></span>
           </header>
           <main>
             <slot name="content" />
@@ -17,19 +17,19 @@
           </footer>
         </div>
       </div>
-    </teleport>
+    </Teleport>
   </template>
 </template>
-<script>
+
+<script lang="ts">
 import Button from "./Button.vue";
 export default {
-  components: { Button },
   props: {
     visible: {
       type: Boolean,
-      default: true,
+      default: false,
     },
-    closeonClickOverlay: {
+    closeOnClickOverlay: {
       type: Boolean,
       default: true,
     },
@@ -40,26 +40,33 @@ export default {
       type: Function,
     },
   },
+  components: {
+    Button,
+  },
   setup(props, context) {
     const close = () => {
       context.emit("update:visible", false);
     };
-    const onClick = () => {
-      if (props.closeonClickOverlay === true) {
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
         close();
       }
     };
     const ok = () => {
-      if (props.ok && props.ok() !== false) {
+      if (props.ok?.() !== false) {
         close();
       }
-      context.emit("ok");
     };
     const cancel = () => {
       props.cancel?.();
       close();
     };
-    return { close, onClick, cancel, ok };
+    return {
+      close,
+      onClickOverlay,
+      ok,
+      cancel,
+    };
   },
 };
 </script>
