@@ -83,7 +83,7 @@ export default {
   }
 }
 aside {
-  background: rgba(132, 195, 255, 1);
+  background: #e4effe;
   width: 180px;
   padding: 16px 0;
   border-right: 1px solid #dcdfe5;
@@ -101,9 +101,8 @@ aside {
   > ol {
     > li {
       > a {
-        display: block;
         padding: 8px 16px;
-        text-decoration: none;
+        display: block;
       }
       .router-link-active {
         background: white;

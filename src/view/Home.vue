@@ -48,11 +48,12 @@ export default {
 
 <style lang="scss" scoped>
 .topNavaddBan {
-  background: linear-gradient(
+  /* background: linear-gradient(
     137deg,
     rgba(132, 195, 255, 1) 0%,
     rgba(62, 133, 234, 1) 100%
-  );
+  ); */
+  background: #e4effe;
   clip-path: ellipse(80% 60% at 50% 40%);
 }
 .features {

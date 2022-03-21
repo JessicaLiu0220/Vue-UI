@@ -46,9 +46,9 @@ export default {
 $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
-$blue: #40a9ff;
+$blue: #3e9efc;
 $radius: 4px;
-$red: red;
+$red: #f56c6c;
 $grey: grey;
 .gulu-button {
   box-sizing: border-box;
@@ -71,7 +71,8 @@ $grey: grey;
   &:hover,
   &:focus {
     color: $blue;
-    border-color: $blue;
+    border-color: #b2d8fd;
+    background: #ecf5fe;
   }
   &:focus {
     outline: none;
