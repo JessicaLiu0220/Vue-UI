@@ -7,8 +7,9 @@
     </router-link>
     <ul class="menu">
       <li>
-        <router-link to="/doc">文档</router-link>
+        <router-link class="doc" to="/doc">文档</router-link>
       </li>
+      <li><router-link class="shouye" to="/">首页</router-link></li>
     </ul>
     <svg v-if="toggleMenuButtonVisible" class="toggleAside" @click="toggleMenu">
       <use xlink:href="#icon-caidan"></use>
@@ -39,6 +40,8 @@ export default {
 
 <style lang="scss" scoped>
 .topnav {
+  /* background: #3e9efc; */
+
   display: flex;
   padding: 16px;
   position: fixed;
@@ -48,6 +51,8 @@ export default {
   z-index: 10;
   justify-content: center;
   align-items: center;
+  z-index: 11;
+
   > .logo {
     max-width: 6em;
     margin-right: auto;
@@ -57,16 +62,17 @@ export default {
     }
   }
   > .menu {
-    background: #fff;
     display: inline-block;
-    border-radius: 8px;
-    padding: 5px 1px;
-
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
+
     > li {
-      margin: 0 1em;
+      background: #fff;
+      border: 1px solid #dcdfe5;
+      border-radius: 8px;
+      margin: 0 5px;
+      padding: 5px 10px;
     }
   }
   > .toggleAside {

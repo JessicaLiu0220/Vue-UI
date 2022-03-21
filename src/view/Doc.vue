@@ -80,19 +80,20 @@ export default {
     flex-grow: 1;
     padding: 16px 45px;
     background: white;
-    border: 1px solid green;
   }
 }
 aside {
   background: rgba(132, 195, 255, 1);
   width: 180px;
   padding: 16px 0;
-  border: 1px solid red;
+  border-right: 1px solid #dcdfe5;
+  box-shadow: 4px 4px 5px #dcdfe5;
   position: fixed;
   top: 0;
   left: 0;
   padding-top: 70px;
   height: 100%;
+  z-index: 10;
   > h2 {
     margin-bottom: 4px;
     padding: 0 16px;

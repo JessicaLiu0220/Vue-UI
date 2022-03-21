@@ -19,7 +19,7 @@ export const router = createRouter(
             { path: '/', component: Home },
             {
                 path: '/doc', component: Doc, children: [
-                    { path: "", redirect: '/doc/intro' },
+                    { path: "", redirect: '/doc/intro' },//默认路由
                     { path: "intro", component: md('intro') },
                     { path: "start", component: md('get-started') },
                     { path: "install", component: md('install') },

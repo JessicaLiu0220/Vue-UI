@@ -75,7 +75,6 @@ $border-color: #d9d9d9;
   min-width: 15em;
   max-width: 90%;
   &-overlay {
-    /* border: 10px solid red; */
     position: fixed;
     top: 0;
     left: 0;
