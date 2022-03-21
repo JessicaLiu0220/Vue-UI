@@ -1,4 +1,6 @@
-<demo>常规使用</demo>
+<demo>
+常规使用
+</demo>
 <template>
   <div>
     <Button>你好</Button>
@@ -7,7 +9,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Button from "../lib/Button.vue";
 export default {
   components: {
