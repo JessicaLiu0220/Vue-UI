@@ -1,10 +1,10 @@
 // @ts-nocheck
-// import path from 'path'
-// import fs from 'fs'
-// import marked from 'marked'
-const path = require('path')
-const fs = require('fs')
-const marked = require('marked')
+import path from 'path'
+import fs from 'fs'
+import marked from 'marked'
+// const path = require('path')
+// const fs = require('fs')
+// const marked = require('marked')
 
 
 const mdToJs = str => {
